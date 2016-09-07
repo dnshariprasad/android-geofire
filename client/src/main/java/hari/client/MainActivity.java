@@ -22,9 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... strings) {
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("locs");
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("patients_locations");
             GeoFire geoFire = new GeoFire(ref);
-            geoFire.setLocation("firebase-hq", new GeoLocation(37.7853889, -122.4056973));
+            geoFire.setLocation("ravi", new GeoLocation(37.7853889, -122.4056973));
             return null;
         }
     }
