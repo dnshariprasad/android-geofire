@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "687922062725",
+    "firebase_url": "https://geofire-e8a1d.firebaseio.com",
+    "project_id": "geofire-e8a1d",
+    "storage_bucket": "geofire-e8a1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:687922062725:android:8a40eae84b744e29",
+        "android_client_info": {
+          "package_name": "hari.client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "687922062725-beum587a30tqiql1vollohplnimpvf8h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hari.client",
+            "certificate_hash": "9266D750F87B1F346914F543C90C0219C4E2B94F"
+          }
+        },
+        {
+          "client_id": "687922062725-tc4cmdcgaqnt11vijkuntabi9sbv3dh6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbcVNmxQ9r_D4xTvJec-B4DIJ7eRxplTM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "687922062725-tc4cmdcgaqnt11vijkuntabi9sbv3dh6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
