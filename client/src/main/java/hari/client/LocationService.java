@@ -29,7 +29,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
     private GoogleApiClient mGoogleApiClient;
     private DatabaseReference ref;
     private GeoFire geoFire;
-
+    private String name;
     public static void start(Context context) {
         Intent starter = new Intent(context, LocationService.class);
         context.startService(starter);
@@ -40,6 +40,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
         // The service is being created
         super.onCreate();
         Log.d(TAG, "onCreate");
+        name = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE).getString(Constant.NAME, "");
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -81,7 +82,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
         Log.d(TAG, "GoogleApiClient.ConnectionCallbacks-onConnected");
         if (PermissionUtil.checkLocationPermission(this)) {
             Location location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-            geoFire.setLocation("ravi", new GeoLocation(location.getLatitude(), location.getLongitude()));
+            geoFire.setLocation(name, new GeoLocation(location.getLatitude(), location.getLongitude()));
             getLocationUpdates();
         } else {
             Toast.makeText(LocationService.this, "Location permission not granted.", Toast.LENGTH_SHORT).show();
@@ -92,7 +93,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
     @Override
     public void onLocationChanged(Location location) {
         if (PermissionUtil.checkLocationPermission(this)) {
-            geoFire.setLocation("ravi", new GeoLocation(location.getLatitude(), location.getLongitude()));
+            geoFire.setLocation(name, new GeoLocation(location.getLatitude(), location.getLongitude()));
         } else {
             Toast.makeText(LocationService.this, "Location permission not granted.", Toast.LENGTH_SHORT).show();
             Log.i(TAG, "getLocationUpdates: No location permission.");
