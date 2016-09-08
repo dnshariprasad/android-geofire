@@ -15,17 +15,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        (new Task()).execute();
-    }
-
-    class Task extends AsyncTask<String, String, String> {
-
-        @Override
-        protected String doInBackground(String... strings) {
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("patients_locations");
-            GeoFire geoFire = new GeoFire(ref);
-            geoFire.setLocation("ravi", new GeoLocation(37.7853889, -122.4056973));
-            return null;
-        }
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("patients_locations");
+        GeoFire geoFire = new GeoFire(ref);
+        geoFire.setLocation("ravi", new GeoLocation(37.7853889, -122.4056973));
     }
 }
