@@ -92,6 +92,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 et_name.setVisibility(View.GONE);
                 tv_tracking_status.setVisibility(View.VISIBLE);
 
+                MapActivity.start(this);
+
+                finish();
+
                 break;
         }
     }
