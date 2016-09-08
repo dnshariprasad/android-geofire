@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = "MainActivity";
     public static final int REQUEST_PERMISSION_LOCATION = 1;
     private EditText et_name;
     private Button btn_continue;
@@ -19,12 +19,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor sharedPreferencesEditor;
     private String name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         et_name = (EditText) findViewById(R.id.et_name);
+
         tv_tracking_status = (TextView) findViewById(R.id.tv_tracking_status);
+        tv_tracking_status.setOnClickListener(this);
+
         btn_continue = (Button) findViewById(R.id.btn_continue);
 
         btn_continue.setOnClickListener(this);
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
 
         name = sharedPreferences.getString(Constant.NAME, "");
+
         if (name.length() == 0) {
             btn_continue.setVisibility(View.VISIBLE);
             et_name.setVisibility(View.VISIBLE);
@@ -40,9 +45,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             btn_continue.setVisibility(View.GONE);
             et_name.setVisibility(View.GONE);
             tv_tracking_status.setVisibility(View.VISIBLE);
-            startTakingService();
-        }
 
+            startTakingService();
+
+            MapActivity.start(this);
+
+            finish();
+        }
     }
 
     @Override

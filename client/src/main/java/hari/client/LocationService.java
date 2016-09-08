@@ -3,6 +3,7 @@ package hari.client;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -30,6 +31,8 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
     private DatabaseReference ref;
     private GeoFire geoFire;
     private String name;
+    private SharedPreferences sharedPreferences;
+
     public static void start(Context context) {
         Intent starter = new Intent(context, LocationService.class);
         context.startService(starter);
@@ -40,7 +43,10 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
         // The service is being created
         super.onCreate();
         Log.d(TAG, "onCreate");
-        name = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE).getString(Constant.NAME, "");
+        sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
+
+        name = sharedPreferences.getString(Constant.NAME, "");
+
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)

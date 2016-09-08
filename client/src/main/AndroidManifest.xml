@@ -26,10 +26,24 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".MapActivity" />
+
         <service
             android:name=".LocationService"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCHERfYcrjzxX1RSy3ZFJsWtxkr4M9OCwQ" />
+
+        <uses-feature
+            android:glEsVersion="0x00020000"
+            android:required="true" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>
