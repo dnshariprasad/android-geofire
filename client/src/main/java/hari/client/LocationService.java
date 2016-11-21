@@ -53,7 +53,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
                 .addApi(LocationServices.API)
                 .build();
 
-        ref = FirebaseDatabase.getInstance().getReference("patients_locations");
+        ref = FirebaseDatabase.getInstance().getReference("patients_locations/"+"3849132c-b517-e611-80cb-22000b0a8c46");
         geoFire = new GeoFire(ref);
 
         mGoogleApiClient.connect();

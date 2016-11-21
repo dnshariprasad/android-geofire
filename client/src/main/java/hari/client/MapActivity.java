@@ -77,7 +77,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         markers = new HashMap<>();
 
-        ref = FirebaseDatabase.getInstance().getReference("patients_locations");
+        ref = FirebaseDatabase.getInstance().getReference("patients_locations/" + "3849132c-b517-e611-80cb-22000b0a8c46");
         geoFire = new GeoFire(ref);
 
         geoQuery = geoFire.queryAtLocation(new GeoLocation(17.444716, 78.396750), 1);
